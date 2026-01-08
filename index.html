@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Ester</title>
+
+<!-- Fontes diferentes -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at top, #0a0a0a, #000);
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    color: #fff;
+}
+
+/* Partículas de fundo */
+.particle {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+    animation: float 12s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 0; }
+    to { transform: translateY(-10vh); opacity: 1; }
+}
+
+/* Container */
+.container {
+    max-width: 420px;
+    margin: auto;
+    padding: 40px 20px;
+    text-align: center;
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Foto */
+.photo {
+    width: 260px;
+    height: 260px;
+    margin: auto;
+    border-radius: 50%;
+    background: url('https://s11.aconvert.com/convert/p3r68-cdx67/hao28-njpx3.jpg') center/cover no-repeat;
+    box-shadow: 0 0 40px rgba(255,0,80,0.4);
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 30px rgba(255,0,80,0.4); }
+    50% { box-shadow: 0 0 60px rgba(255,0,120,0.8); }
+    100% { box-shadow: 0 0 30px rgba(255,0,80,0.4); }
+}
+
+/* Texto */
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    margin-top: 30px;
+    letter-spacing: 1px;
+}
+
+.text {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #e0e0e0;
+}
+
+.text strong {
+    color: #ff4d6d;
+}
+
+/* Player */
+.player {
+    margin-top: 35px;
+}
+
+.play-btn {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #ff4d6d, #ff002f);
+    color: white;
+    font-size: 34px;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(255,0,80,0.7);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.play-btn:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 50px rgba(255,0,120,1);
+}
+
+/* Assinatura */
+.footer {
+    margin-top: 40px;
+    font-size: 13px;
+    opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<!-- Partículas -->
+<script>
+for(let i=0;i<40;i++){
+    let p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = Math.random()*100+"vw";
+    p.style.animationDuration = (8 + Math.random()*10)+"s";
+    document.body.appendChild(p);
+}
+</script>
+
+<div class="container">
+    <div class="photo"></div>
+
+    <div class="title">Ester</div>
+
+    <div class="text">
+        Não é só saudade.<br>
+        É aquele silêncio estranho quando tudo lembra você.<br><br>
+
+        É ver algo simples e pensar <strong>“ela ia gostar disso”</strong>.<br>
+        É perceber que eu mudei tarde demais,<br>
+        mas mudei de verdade.<br><br>
+
+        Não tô aqui pra prometer o impossível.<br>
+        Só pra ser sincero:  
+        <strong>você ainda mora em mim.</strong>
+    </div>
+
+    <div class="player">
+        <button class="play-btn" onclick="toggleMusic()">▶</button>
+        <audio id="music">
+            <source src="https://s33.aconvert.com/convert/p3r68-cdx67/8nqfn-sxpn6.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="footer">
+        feito com sentimento, não com pressa
+    </div>
+</div>
+
+<script>
+const music = document.getElementById("music");
+const btn = document.querySelector(".play-btn");
+
+function toggleMusic(){
+    if(music.paused){
+        music.play();
+        btn.innerHTML = "❚❚";
+    } else {
+        music.pause();
+        btn.innerHTML = "▶";
+    }
+}
+</script>
+
+</body>
+</html>
